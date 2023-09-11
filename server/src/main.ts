@@ -3,13 +3,17 @@ import { ConfigService } from '@nestjs/config'
 import { AppModule } from './app.module'
 import { IAppConfig } from './common/config/env'
 import redisSession from './common/app/redis-store'
+import { JsonLogger } from './common/utils/logger/json-logger'
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule)
+  const logger = new JsonLogger()
+  const app = await NestFactory.create(AppModule, {
+    logger,
+  })
   const configService = app.get<ConfigService>(ConfigService)
   const appConfig = configService.get<IAppConfig>('app-config')
 
-  app.use(redisSession(appConfig))
+  app.use(redisSession(appConfig, logger))
 
   await app.listen(appConfig.port)
 }

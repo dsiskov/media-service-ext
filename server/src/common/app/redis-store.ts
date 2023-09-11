@@ -2,8 +2,12 @@ import { createClient } from 'redis'
 import * as connectRedis from 'connect-redis'
 import * as session from 'express-session'
 import { IAppConfig } from '../config/env'
+import { JsonLogger } from '../utils/logger/json-logger'
 
-export default function redisSession(appConfig: IAppConfig) {
+export default function redisSession(
+  appConfig: IAppConfig,
+  logger: JsonLogger,
+) {
   const RedisStore = connectRedis(session)
 
   const redisClient = createClient({
@@ -16,11 +20,9 @@ export default function redisSession(appConfig: IAppConfig) {
   })
 
   redisClient.on('error', (err) =>
-    console.log('Could not establish a connection with redis. ' + err),
+    logger.error('Could not establish a connection with redis. ' + err),
   )
-  redisClient.on('connect', () =>
-    console.log('Connected to redis successfully'),
-  )
+  redisClient.on('connect', () => logger.log('Connected to redis successfully'))
 
   return session({
     store: redisStore,

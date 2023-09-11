@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common'
-import { AppController } from './app.controller'
-import { AppService } from './app.service'
 import { ConfigModule } from '@nestjs/config'
 import { CacheModule } from '@nestjs/cache-manager'
 import env from './common/config/env'
 import type { RedisClientOptions } from 'redis'
+import { HealthModule } from './health/health.module'
 import * as redisStore from 'cache-manager-redis-store'
+import { LoggerModule } from './common/utils/logger/json-logger.module'
 
 @Module({
   imports: [
@@ -16,8 +16,8 @@ import * as redisStore from 'cache-manager-redis-store'
       host: process.env.SESSION_HOST,
       port: process.env.SESSION_PORT,
     }),
+    LoggerModule,
+    HealthModule,
   ],
-  controllers: [AppController],
-  providers: [AppService],
 })
 export class AppModule {}
