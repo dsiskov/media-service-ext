@@ -7,9 +7,11 @@ npm install -g @angular/cli
 ng new todo --routing=false --style=css --skip-install
 ng config cli.packageManager yarn
 ng add @angular-eslint/schematics
+yarn add tailwindcss postcss autoprefixer --dev
+npx tailwindcss init
 ```
 
-Examples
+Noteworthy examples
 
 ```
 # routing example
