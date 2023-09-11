@@ -9,6 +9,13 @@ ng config cli.packageManager yarn
 ng add @angular-eslint/schematics
 ```
 
+Examples
+
+```
+# routing example
+https://github.com/SinghDigamber/angular-routing-tutorial/blob/main/src/app/app-routing.module.ts
+```
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
