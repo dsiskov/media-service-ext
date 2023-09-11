@@ -1,8 +1,8 @@
 import { createClient } from 'redis'
 import * as connectRedis from 'connect-redis'
 import * as session from 'express-session'
-import { IAppConfig } from '../config/env'
-import { JsonLogger } from '../utils/logger/json-logger'
+import { IAppConfig } from '../../config/env'
+import { JsonLogger } from '../logger/json-logger'
 
 export default function redisSession(
   appConfig: IAppConfig,
