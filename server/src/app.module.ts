@@ -3,13 +3,13 @@ import { AppController } from './app.controller'
 import { AppService } from './app.service'
 import { ConfigModule } from '@nestjs/config'
 import { CacheModule } from '@nestjs/cache-manager'
-import config from './common/config/configuration'
+import env from './common/config/env'
 import type { RedisClientOptions } from 'redis'
 import * as redisStore from 'cache-manager-redis-store'
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true, load: [config] }),
+    ConfigModule.forRoot({ isGlobal: true, load: [env] }),
     CacheModule.register<RedisClientOptions>({
       isGlobal: true,
       store: redisStore,
