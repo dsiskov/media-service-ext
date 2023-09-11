@@ -6,6 +6,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 npm install -g @angular/cli
 ng new todo --routing=false --style=css --skip-install
 ng config cli.packageManager yarn
+ng add @angular-eslint/schematics
 ```
 
 ## Development server
