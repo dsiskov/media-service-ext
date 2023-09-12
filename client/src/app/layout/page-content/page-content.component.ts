@@ -5,6 +5,6 @@ import { Component } from '@angular/core'
   templateUrl: './page-content.component.html',
   styleUrls: ['./page-content.component.css'],
 })
-
-// TODO: Setup theming
-export class PageContentComponent {}
+export class PageContentComponent {
+  darkMode = true
+}

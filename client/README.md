@@ -20,6 +20,9 @@ https://github.com/SinghDigamber/angular-routing-tutorial/blob/main/src/app/app-
 
 # auth example
 https://github.com/mathisGarberg/angular-folder-structure/blob/master/src/app/app-routing.module.ts
+
+# tailwind theme
+https://stackoverflow.com/questions/68887779/how-to-toggle-theme-in-tailwind-dark-mode-with-angular
 ```
 
 ## Development server
