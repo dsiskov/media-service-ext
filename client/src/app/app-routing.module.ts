@@ -1,9 +1,6 @@
 import { NgModule } from '@angular/core'
 import { RouterModule, Routes } from '@angular/router'
-import { LoginComponent } from './login/login.component'
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component'
-import { HomeComponent } from './home/home.component'
-import { AboutComponent } from './about/about.component'
+import { PageContentComponent } from './layout/page-content/page-content.component'
 
 const routes: Routes = [
   {
@@ -12,23 +9,26 @@ const routes: Routes = [
     pathMatch: 'full',
   },
   {
-    path: 'home',
-    component: HomeComponent,
+    path: '',
+    component: PageContentComponent,
+    children: [
+      {
+        path: 'home',
+        loadChildren: () =>
+          import('@modules/home/home.module').then((m) => m.HomeModule),
+      },
+    ],
   },
-  {
-    path: 'login',
-    component: LoginComponent,
-  },
-  {
-    path: 'about',
-    component: AboutComponent,
-  },
-  { path: '**', component: PageNotFoundComponent },
+  { path: '**', redirectTo: '/home', pathMatch: 'full' },
 ]
 
 @NgModule({
   declarations: [],
-  imports: [RouterModule.forRoot(routes)],
+  imports: [
+    RouterModule.forRoot(routes, {
+      useHash: true,
+    }),
+  ],
   providers: [],
   exports: [RouterModule],
   bootstrap: [],

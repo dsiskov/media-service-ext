@@ -15,7 +15,11 @@ Noteworthy examples
 
 ```
 # routing example
+https://www.positronx.io/angular-router-tutorial/
 https://github.com/SinghDigamber/angular-routing-tutorial/blob/main/src/app/app-routing.module.ts
+
+# auth example
+https://github.com/mathisGarberg/angular-folder-structure/blob/master/src/app/app-routing.module.ts
 ```
 
 ## Development server
