@@ -73,6 +73,7 @@
           </div>
         </div>
       </div>
+
       <div class="nav-bar-large">
         <button type="button" class="nav-notifications-button">
           <span class="absolute -inset-1.5"></span>
@@ -92,6 +93,24 @@
             />
           </svg>
         </button>
+
+        <div class="relative ml-3">
+          <button
+            *ngIf="darkMode$ | async"
+            mat-button
+            (click)="toggleDarkMode(false)"
+          >
+            <mat-icon class="icon-dark-mode">light_mode</mat-icon>
+          </button>
+
+          <button
+            *ngIf="(darkMode$ | async) === false"
+            mat-button
+            (click)="toggleDarkMode(true)"
+          >
+            <mat-icon class="icon-light-mode">nightlight</mat-icon>
+          </button>
+        </div>
 
         <!-- Profile dropdown -->
         <div class="relative ml-3">

@@ -1,4 +1,6 @@
 import { Component } from '@angular/core'
+import { ThemeService } from '@core/service/theme.service'
+import { Observable } from 'rxjs'
 
 @Component({
   selector: 'app-content',
@@ -6,5 +8,9 @@ import { Component } from '@angular/core'
   styleUrls: ['./page-content.component.css'],
 })
 export class PageContentComponent {
-  darkMode = true
+  public darkMode: Observable<boolean>
+
+  constructor(private readonly themeService: ThemeService) {}
+
+  darkMode$ = this.themeService.getDarkTheme()
 }

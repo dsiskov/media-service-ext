@@ -1,4 +1,4 @@
-<div [ngClass]="{ dark: darkMode }">
+<div [ngClass]="{ dark: darkMode$ | async }">
   <div class="bg-white text-gray-800 dark:bg-gray-700 dark:text-gray-200">
     <app-nav />
 

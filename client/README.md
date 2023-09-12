@@ -21,8 +21,13 @@ https://github.com/SinghDigamber/angular-routing-tutorial/blob/main/src/app/app-
 # auth example
 https://github.com/mathisGarberg/angular-folder-structure/blob/master/src/app/app-routing.module.ts
 
-# tailwind theme
+# tailwind
 https://stackoverflow.com/questions/68887779/how-to-toggle-theme-in-tailwind-dark-mode-with-angular
+https://v1.tailwindcss.com/docs/customizing-colors#default-color-palette
+https://github.com/tailwindlabs/tailwindcss/blob/master/stubs/config.full.js
+
+# material icons
+https://fonts.google.com/icons?selected=Material+Icons:light_mode:&icon.query=sun&icon.platform=web
 ```
 
 ## Development server
