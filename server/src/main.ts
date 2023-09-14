@@ -10,6 +10,8 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule, {
     logger,
   })
+  app.setGlobalPrefix('api')
+
   const configService = app.get<ConfigService>(ConfigService)
   const appConfig = configService.get<IAppConfig>('app-config')
 

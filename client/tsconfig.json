@@ -28,6 +28,7 @@
       "@app/*": ["app/*"],
       "@core/*": ["app/core/*"],
       "@modules/*": ["app/modules/*"],
+      "@lib/*": ["../lib/*"]
     },
   },
   "angularCompilerOptions": {
