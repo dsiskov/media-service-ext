@@ -1,2 +1,3 @@
 .vscode
 *.rest
+node_modules

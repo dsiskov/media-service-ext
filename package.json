@@ -1,0 +1,17 @@
+{
+  "name": "media-extensions-ext",
+  "version": "1.0.0",
+  "description": "R&D",
+  "author": "Dragan Siskov",
+  "license": "ISC",
+  "devDependencies": {
+    "@commitlint/cli": "^17.7.1",
+    "@commitlint/config-conventional": "^17.7.0",
+    "husky": "^8.0.3"
+  },
+  "commitlint": {
+    "extends": [
+      "@commitlint/config-conventional"
+    ]
+  }
+}
