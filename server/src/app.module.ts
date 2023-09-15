@@ -6,6 +6,9 @@ import type { RedisClientOptions } from 'redis'
 import { HealthModule } from './health/health.module'
 import * as redisStore from 'cache-manager-redis-store'
 import { LoggerModule } from './common/utils/logger/json-logger.module'
+import { ServeStaticModule } from '@nestjs/serve-static'
+import { join } from 'path'
+import { AppController } from './app.controller'
 
 @Module({
   imports: [
@@ -16,8 +19,12 @@ import { LoggerModule } from './common/utils/logger/json-logger.module'
       host: process.env.SESSION_HOST,
       port: process.env.SESSION_PORT,
     }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '../../../', 'client/dist/client'),
+    }),
     LoggerModule,
     HealthModule,
   ],
+  controllers: [AppController],
 })
 export class AppModule {}
