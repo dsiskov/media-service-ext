@@ -21,7 +21,6 @@ cd ../client && ln -s "../lib" lib && cd ../server && ln -s "../lib" lib
 cd .. && cat >> ./server/.env << 'END'
 SESSION_HOST=local.host
 SESSION_PORT=6382
-SESSION_PREFIX=dvox
 SESSION_SECRET=secret
 SESSION_MAX_AGE=600000
 END

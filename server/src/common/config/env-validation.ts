@@ -1,5 +1,6 @@
 import { plainToClass } from 'class-transformer'
 import {
+  IsBoolean,
   IsNotEmpty,
   IsNumber,
   IsOptional,
@@ -21,9 +22,9 @@ class AppEnvironmentVariables {
   @IsNumber()
   SESSION_PORT: number
 
-  @IsNotEmpty()
-  @IsString()
-  SESSION_PREFIX: string
+  @IsOptional()
+  @IsBoolean()
+  SESSION_DISABLE: boolean
 
   @IsNotEmpty()
   @IsString()
