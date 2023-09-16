@@ -15,7 +15,7 @@ async function bootstrap() {
   const configService = app.get<ConfigService>(ConfigService)
   const appConfig = configService.get<IAppConfig>('app-config')
 
-  app.use(redisSession(appConfig, logger))
+  if (!appConfig.session.disable) app.use(redisSession(appConfig, logger))
 
   await app.listen(appConfig.port)
 }

@@ -5,7 +5,7 @@ export interface IAppConfig {
   session: {
     host: string
     port: number
-    prefix: string
+    disable: boolean
     secret: string
     maxAge: number
   }
@@ -20,7 +20,7 @@ export default registerAs('app-config', (): IAppConfig => {
     session: {
       host: process.env.SESSION_HOST,
       port: parseInt(process.env.SESSION_PORT),
-      prefix: process.env.SESSION_PREFIX,
+      disable: !!process.env.SESSION_DISABLE,
       secret: process.env.SESSION_SECRET,
       maxAge: parseInt(process.env.SESSION_MAX_AGE),
     },

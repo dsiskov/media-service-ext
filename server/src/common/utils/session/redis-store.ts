@@ -8,6 +8,8 @@ export default function redisSession(
   appConfig: IAppConfig,
   logger: JsonLogger,
 ) {
+  if (appConfig.session.disable) return
+
   const RedisStore = connectRedis(session)
 
   const redisClient = createClient({
@@ -16,7 +18,6 @@ export default function redisSession(
   })
   const redisStore = new RedisStore({
     client: redisClient,
-    prefix: appConfig.session.prefix,
   })
 
   redisClient.on('error', (err) =>
