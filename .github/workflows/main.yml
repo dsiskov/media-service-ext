@@ -1,0 +1,74 @@
+name: Build and deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 18.x
+
+      - name: test
+        run: |
+          cp -r ./lib ./server/lib
+          cp -r ./lib ./client/lib
+          cd client && yarn install
+          # TODO: Fix client tests
+          # yarn test
+
+          cd ../server && yarn install
+          yarn test
+
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v2
+        with:
+          node-version: 18.x
+
+      - name: build
+        run: |
+          # TODO: Improve
+          sed -i -e 's/http:\/\/localhost:3000/${{secrets.BACKEND_API}}/g' ./client/src/proxy.conf.json
+
+          cp -r ./lib ./server/lib
+          cp -r ./lib ./client/lib
+
+          cd client
+          yarn install
+          yarn build
+
+          echo "client just built"
+          ls
+          mkdir ../server/ng-build
+          cp -r dist/ ../server/ng-build/
+
+          cd ../server
+          # TODO: --production
+          yarn install
+          yarn build
+          cd ..
+
+      - name: deploy
+        uses: akhileshns/heroku-deploy@v3.12.14
+        with:
+          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+          heroku_email: ${{secrets.HEROKU_EMAIL}}
+          usedocker: true
+          appdir: 'server'
+        env:
+          NODE_ENV: production
+          PORT: 8080
+          SESSION_HOST: ${{ secrets.SESSION_HOST }}
+          SESSION_PORT: ${{ secrets.SESSION_PORT }}
+          SESSION_SECRET: ${{ secrets.SESSION_SECRET }}
+          SESSION_MAX_AGE: ${{ secrets.SESSION_MAX_AGE }}
+          SESSION_DISABLE: 1

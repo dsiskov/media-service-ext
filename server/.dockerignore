@@ -1,0 +1,26 @@
+# IDE's
+.project
+.idea
+.vscode
+
+# Node.js & npm
+*.log
+.npm
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Misc
+.prettierignore
+.git
+.dockerignore
+Dockerfile
+pipeline
+
+# App
+.env*
+*.test.js
+
+# Operating system
+.DS_Store
+Thumbs.db
