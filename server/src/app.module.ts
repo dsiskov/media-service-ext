@@ -23,7 +23,7 @@ import { AppController } from './app.controller'
       rootPath: join(
         __dirname,
         (process.env.NODE_ENV = 'production'
-          ? '../build/client'
+          ? '../ng-build/client'
           : '../../../client/dist/client'),
       ),
     }),
