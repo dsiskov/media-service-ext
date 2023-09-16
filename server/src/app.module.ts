@@ -22,9 +22,9 @@ import { AppController } from './app.controller'
     ServeStaticModule.forRoot({
       rootPath: join(
         __dirname,
-        (process.env.NODE_ENV = 'production'
-          ? '../ng-build/client'
-          : '../../../client/dist/client'),
+        process.env.NODE_ENV == 'production'
+          ? '../../dist/ng-build/client'
+          : '../../../client/dist/client',
       ),
     }),
     LoggerModule,
