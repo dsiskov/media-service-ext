@@ -14,10 +14,12 @@ class AppEnvironmentVariables {
   @IsNumber()
   PORT: number
 
+  @IsOptional()
   @IsNotEmpty()
   @IsString()
   SESSION_HOST: string
 
+  @IsOptional()
   @IsNotEmpty()
   @IsNumber()
   SESSION_PORT: number
@@ -26,10 +28,12 @@ class AppEnvironmentVariables {
   @IsBoolean()
   SESSION_DISABLE: boolean
 
+  @IsOptional()
   @IsNotEmpty()
   @IsString()
   SESSION_SECRET: string
 
+  @IsOptional()
   @IsNotEmpty()
   @IsNumber()
   SESSION_MAX_AGE: number
