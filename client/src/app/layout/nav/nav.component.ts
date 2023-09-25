@@ -12,6 +12,7 @@ export class NavComponent implements OnInit {
 
   public darkMode$: Observable<boolean>
   profilePopupOpen = false
+  mobileMenuOpen = false
 
   ngOnInit() {
     this.darkMode$ = this.themeService.getDarkTheme()
@@ -19,6 +20,10 @@ export class NavComponent implements OnInit {
 
   toggleProfileOpen() {
     this.profilePopupOpen = !this.profilePopupOpen
+  }
+
+  toggleMobileMenu() {
+    this.mobileMenuOpen = !this.mobileMenuOpen
   }
 
   toggleDarkMode(checked: boolean) {

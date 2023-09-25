@@ -1,11 +1,12 @@
-<nav class="bg-gray-800">
+<nav class="bg-neutral-400 dark:bg-gray-800">
   <div class="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
     <div class="relative flex h-16 items-center justify-between">
       <div class="absolute inset-y-0 left-0 flex items-center sm:hidden">
         <!-- Mobile menu button-->
         <button
           type="button"
-          class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-400 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white"
+          (click)="toggleMobileMenu()"
+          class="relative inline-flex items-center justify-center rounded-md p-2 text-gray-700 hover:bg-gray-700 hover:text-white focus:outline-none focus:ring-2 focus:ring-inset focus:ring-white dark:text-gray-400"
           aria-controls="mobile-menu"
           aria-expanded="false"
         >
@@ -65,7 +66,7 @@
           <div class="flex space-x-4">
             <a
               href="#"
-              class="rounded-md px-3 py-2 text-sm font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
+              class="rounded-md px-3 py-2 text-sm font-medium text-gray-600 hover:bg-gray-700 hover:text-white dark:text-gray-300"
               routerLinkActive="active"
               routerLink="/about"
               >About</a
@@ -76,13 +77,13 @@
 
       <div class="nav-bar-large">
         <button type="button" class="nav-notifications-button">
-          <span class="absolute -inset-1.5"></span>
+          <!-- <span class="absolute -inset-1.5"></span> -->
           <span class="sr-only">View notifications</span>
           <svg
             class="h-6 w-6"
             fill="none"
             viewBox="0 0 24 24"
-            stroke-width="1.5"
+            stroke-width="0.5"
             stroke="currentColor"
             aria-hidden="true"
           >
@@ -94,26 +95,28 @@
           </svg>
         </button>
 
-        <div class="relative ml-3">
-          <button
-            *ngIf="darkMode$ | async"
-            mat-button
-            (click)="toggleDarkMode(false)"
-          >
-            <mat-icon class="icon-dark-mode">light_mode</mat-icon>
-          </button>
+        <button
+          class="nav-notifications-button ml-2"
+          *ngIf="darkMode$ | async"
+          (click)="toggleDarkMode(false)"
+        >
+          <div class="h-6 w-6">
+            <mat-icon class="nav-icon">light_mode</mat-icon>
+          </div>
+        </button>
 
-          <button
-            *ngIf="(darkMode$ | async) === false"
-            mat-button
-            (click)="toggleDarkMode(true)"
-          >
-            <mat-icon class="icon-light-mode">nightlight</mat-icon>
-          </button>
-        </div>
+        <button
+          class="nav-notifications-button ml-2"
+          *ngIf="(darkMode$ | async) === false"
+          (click)="toggleDarkMode(true)"
+        >
+          <div class="h-6 w-6">
+            <mat-icon class="nav-icon"> nightlight </mat-icon>
+          </div>
+        </button>
 
         <!-- Profile dropdown -->
-        <div class="relative ml-3">
+        <div class="relative ml-2">
           <div>
             <button
               type="button"
@@ -183,29 +186,15 @@
   </div>
 
   <!-- Mobile menu, show/hide based on menu state. -->
-  <div class="sm:hidden" id="mobile-menu">
+  <div class="sm:hidden" id="mobile-menu" *ngIf="mobileMenuOpen">
     <div class="space-y-1 px-2 pb-3 pt-2">
       <!-- Current: "bg-gray-900 text-white", Default: "text-gray-300 hover:bg-gray-700 hover:text-white" -->
+      <!-- aria-current="page" -->
       <a
         href="#"
         class="block rounded-md bg-gray-900 px-3 py-2 text-base font-medium text-white"
-        aria-current="page"
-        >Dashboard</a
-      >
-      <a
-        href="#"
-        class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-        >Team</a
-      >
-      <a
-        href="#"
-        class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-        >Projects</a
-      >
-      <a
-        href="#"
-        class="block rounded-md px-3 py-2 text-base font-medium text-gray-300 hover:bg-gray-700 hover:text-white"
-        >Calendar</a
+        routerLink="/about"
+        >About</a
       >
     </div>
   </div>
