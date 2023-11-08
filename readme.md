@@ -1,15 +1,14 @@
-[![Build and deploy](https://github.com/dsiskov/media-service-ext/actions/workflows/main.yml/badge.svg)](https://github.com/dsiskov/media-service-ext/actions/workflows/main.yml)
+[![Build](https://github.com/dsiskov/media-service-ext/actions/workflows/main.yml/badge.svg)](https://github.com/dsiskov/media-service-ext/actions/workflows/main.yml)
 
 # Media Service Extensions
 
-- Auto deployed [here](https://media-ext-9a19cc1d8e3d.herokuapp.com)
 - No real features next to app skeleton yet - stay tuned :musical_note:
+- Heroku deployment supported (currently disabled)
 
 ## Project purpose
 
 - Familiarize with tech-stack: `Angular, NestJs, Typescript, RxJs, TailwindCSS`
 - Design an open-source, production-ready app from the ground-up
-- Following principles: [Agile](https://agilemanifesto.org/principles.html), [MVP](https://en.wikipedia.org/wiki/Minimum_viable_product), [trunk-based-development](https://efelti.com/tech/?p=87), optimize for [lead-time-of-changes](https://www.leanix.net/en/wiki/vsm/dora-metrics#lead-time-for-changes)
 - (Maybe) Deliver something fun and useful while at it :)
 
 ## How to run locally

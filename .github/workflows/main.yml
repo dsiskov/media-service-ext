@@ -25,40 +25,39 @@ jobs:
           cd ../server && yarn install
           yarn test
 
-  deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v2
-        with:
-          node-version: 18.x
+  # deploy:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v3
+  #     - uses: actions/setup-node@v2
+  #       with:
+  #         node-version: 18.x
 
-      - name: build
-        run: |
-          # TODO: Improve
-          sed -i -e 's/http:\/\/localhost:3000/${{secrets.BACKEND_API}}/g' ./client/src/proxy.conf.json
+  #     - name: build
+  #       run: |
+  #         # TODO: Improve
+  #         sed -i -e 's/http:\/\/localhost:3000/${{secrets.BACKEND_API}}/g' ./client/src/proxy.conf.json
 
-          cp -r ./lib ./server/lib
-          cp -r ./lib ./client/lib
+  #         cp -r ./lib ./server/lib
+  #         cp -r ./lib ./client/lib
 
-          cd client
-          yarn install
-          yarn build
+  #         cd client
+  #         yarn install
+  #         yarn build
 
+  #         cd ../server
+  #         # TODO: --production
+  #         yarn install
+  #         yarn build
 
-          cd ../server
-          # TODO: --production
-          yarn install
-          yarn build
+  #         cp -r ../client/dist/ ./dist/ng-build/
+  #         cd ..
 
-          cp -r ../client/dist/ ./dist/ng-build/
-          cd ..
-
-      - name: deploy
-        uses: akhileshns/heroku-deploy@v3.12.14
-        with:
-          heroku_api_key: ${{secrets.HEROKU_API_KEY}}
-          heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
-          heroku_email: ${{secrets.HEROKU_EMAIL}}
-          usedocker: true
-          appdir: 'server'
+  #     - name: deploy
+  #       uses: akhileshns/heroku-deploy@v3.12.14
+  #       with:
+  #         heroku_api_key: ${{secrets.HEROKU_API_KEY}}
+  #         heroku_app_name: ${{secrets.HEROKU_APP_NAME}}
+  #         heroku_email: ${{secrets.HEROKU_EMAIL}}
+  #         usedocker: true
+  #         appdir: 'server'
